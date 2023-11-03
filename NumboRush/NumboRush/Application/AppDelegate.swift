@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  NumboRush
 //
-//  Created by Sviatoslav Samoilov on 30.10.2023.
+//  Created by Sviatoslav Samoilov on 16.07.2023.
 //
 
 import UIKit
