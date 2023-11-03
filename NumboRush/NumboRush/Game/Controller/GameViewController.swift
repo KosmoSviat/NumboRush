@@ -7,11 +7,11 @@
 
 import UIKit
 
-class GameViewController: UIViewController {
+final class GameViewController: UIViewController {
     //MARK: - IBOutlets
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var taskLabel: UILabel!
-    @IBOutlet var buttonsCollection: [UIButton]!
+    @IBOutlet var numbersButtonsCollection: [UIButton]!
     @IBOutlet weak var emojiLabel: UILabel!
     @IBOutlet weak var repeatButton: UIButton!
     
@@ -21,128 +21,74 @@ class GameViewController: UIViewController {
     // MARK: - Life cycle
     override func viewDidLoad() {
         configureGameScreen()
-        randomArray.configureArray()
-        configureButtons()
-        configureNumber()
     }
     
     // MARK: - Actions
-    @IBAction func button1(_ sender: UIButton) {
-        check(answer: numberLabel.text ?? "", for: sender)
-    }
-    
-    @IBAction func button2(_ sender: UIButton) {
-        check(answer: numberLabel.text ?? "", for: sender)
-    }
-    
-    @IBAction func button3(_ sender: UIButton) {
-        check(answer: numberLabel.text ?? "", for: sender)
-    }
-    
-    @IBAction func button4(_ sender: UIButton) {
-        check(answer: numberLabel.text ?? "", for: sender)
-    }
-    
-    @IBAction func button5(_ sender: UIButton) {
-        check(answer: numberLabel.text ?? "", for: sender)
-    }
-    
-    @IBAction func button6(_ sender: UIButton) {
-        check(answer: numberLabel.text ?? "", for: sender)
-    }
-    
-    @IBAction func button7(_ sender: UIButton) {
-        check(answer: numberLabel.text ?? "", for: sender)
-    }
-    
-    @IBAction func button8(_ sender: UIButton) {
-        check(answer: numberLabel.text ?? "", for: sender)
-    }
-    
-    @IBAction func button9(_ sender: UIButton) {
-        check(answer: numberLabel.text ?? "", for: sender)
-    }
-    
-    @IBAction func button10(_ sender: UIButton) {
-        check(answer: numberLabel.text ?? "", for: sender)
-    }
-    
-    @IBAction func button11(_ sender: UIButton) {
-        check(answer: numberLabel.text ?? "", for: sender)
-    }
-    
-    @IBAction func button12(_ sender: UIButton) {
-        check(answer: numberLabel.text ?? "", for: sender)
-    }
-    
-    @IBAction func button13(_ sender: UIButton) {
-        check(answer: numberLabel.text ?? "", for: sender)
-    }
-    
-    @IBAction func button14(_ sender: UIButton) {
-        check(answer: numberLabel.text ?? "", for: sender)
-    }
-    
-    @IBAction func button15(_ sender: UIButton) {
+    @IBAction func numbersButtonsAction(_ sender: UIButton) {
         check(answer: numberLabel.text ?? "", for: sender)
     }
     
     @IBAction func repeatButton(_ sender: UIButton) {
-        viewDidLoad()
+        configureGameScreen()
     }
     
     // MARK: - Methods
-    private func configureButtons() {
-        var i = 0
-        buttonsCollection.forEach { button in
-            button.setTitle(String(randomArray.arrayInt[i]), for: .normal)
-            i += 1
+    private func configureGameScreen() {
+        randomArray.configureArray()
+        configureNumber()
+        configureButtons()
+        
+        emojiLabel.isHidden = true
+        repeatButton.isHidden = true
+        taskLabel.text = "Найди все числа"
+        numberLabel.isHidden = false
+        numbersButtonsCollection.forEach{ button in
+            button.isHidden = false
         }
     }
     
     private func configureNumber() {
         randomArray.arrayInt.shuffle()
-        numberLabel.text = String(randomArray.arrayInt[0])
+        numberLabel.text = String(randomArray.arrayInt.first ?? 0)
+    }
+    
+    private func configureButtons() {
+        randomArray.arrayInt.enumerated().forEach { (index, value) in
+            numbersButtonsCollection[index].setTitle(String(value), for: .normal)
+        }
     }
     
     private func check(answer: String, for button: UIButton) {
         let isRightNumber = button.currentTitle == numberLabel.text
-        let isArrayEmpty = randomArray.arrayInt.count > 1
+        let isArrayNotEmpty = randomArray.arrayInt.count > 1
         
-        if isArrayEmpty {
+        if isArrayNotEmpty {
             if isRightNumber {
                 button.isHidden = true
-                randomArray.arrayInt.remove(at: 0)
+                randomArray.arrayInt.removeFirst()
                 configureNumber()
             } else {
-                taskLabel.text = "ПОРАЖЕНИЕ"
-                emojiLabel.text = "🙈"
-                buttonsCollection.forEach { button in
+                numbersButtonsCollection.forEach { button in
                     button.isHidden = true
                 }
-                configureWinOrLoseScreen()
+                configureWinLoseScreen(isWin: false)
             }
         } else {
             button.isHidden = true
+            configureWinLoseScreen(isWin: true)
+        }
+    }
+    
+    private func configureWinLoseScreen(isWin: Bool) {
+        if isWin {
             taskLabel.text = "ПОБЕДА"
             emojiLabel.text = "🥳"
-            configureWinOrLoseScreen()
+        } else {
+            taskLabel.text = "ПОРАЖЕНИЕ"
+            emojiLabel.text = "🙈"
         }
-    }
-    
-    private func configureGameScreen() {
-        emojiLabel.isHidden = true
-        repeatButton.isHidden = true
-        taskLabel.text = "Найди все числа"
-        numberLabel.isHidden = false
-        buttonsCollection.forEach{ button in
-            button.isHidden = false
-        }
-    }
-    
-    private func configureWinOrLoseScreen() {
-        repeatButton.isHidden = false
         emojiLabel.isHidden = false
+        repeatButton.isHidden = false
         numberLabel.isHidden = true
     }
 }

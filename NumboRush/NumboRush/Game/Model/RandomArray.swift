@@ -7,7 +7,7 @@
 
 import Foundation
 
-class RandomArray {
+final class RandomArray {
     var arrayInt = [Int]()
     
     func configureArray() {
