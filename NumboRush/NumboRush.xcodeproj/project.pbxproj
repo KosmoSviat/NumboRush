@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		647212F62AEFDEB90024670D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647212F52AEFDEB90024670D /* AppDelegate.swift */; };
 		647212F82AEFDEB90024670D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647212F72AEFDEB90024670D /* SceneDelegate.swift */; };
-		647212FA2AEFDEB90024670D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647212F92AEFDEB90024670D /* ViewController.swift */; };
+		647212FA2AEFDEB90024670D /* GeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647212F92AEFDEB90024670D /* GeneralViewController.swift */; };
 		647212FD2AEFDEB90024670D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 647212FB2AEFDEB90024670D /* Main.storyboard */; };
 		647212FF2AEFDEB90024670D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 647212FE2AEFDEB90024670D /* Assets.xcassets */; };
 		647213022AEFDEB90024670D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 647213002AEFDEB90024670D /* LaunchScreen.storyboard */; };
@@ -19,7 +19,7 @@
 		647212F22AEFDEB90024670D /* NumboRush.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NumboRush.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		647212F52AEFDEB90024670D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		647212F72AEFDEB90024670D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		647212F92AEFDEB90024670D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		647212F92AEFDEB90024670D /* GeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralViewController.swift; sourceTree = "<group>"; };
 		647212FC2AEFDEB90024670D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		647212FE2AEFDEB90024670D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		647213012AEFDEB90024670D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -58,7 +58,7 @@
 			children = (
 				647212F52AEFDEB90024670D /* AppDelegate.swift */,
 				647212F72AEFDEB90024670D /* SceneDelegate.swift */,
-				647212F92AEFDEB90024670D /* ViewController.swift */,
+				647212F92AEFDEB90024670D /* GeneralViewController.swift */,
 				647212FB2AEFDEB90024670D /* Main.storyboard */,
 				647212FE2AEFDEB90024670D /* Assets.xcassets */,
 				647213002AEFDEB90024670D /* LaunchScreen.storyboard */,
@@ -138,7 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				647212FA2AEFDEB90024670D /* ViewController.swift in Sources */,
+				647212FA2AEFDEB90024670D /* GeneralViewController.swift in Sources */,
 				647212F62AEFDEB90024670D /* AppDelegate.swift in Sources */,
 				647212F82AEFDEB90024670D /* SceneDelegate.swift in Sources */,
 			);
@@ -295,11 +295,14 @@
 				DEVELOPMENT_TEAM = MQAY62GC84;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NumboRush/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NumboRush;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -307,9 +310,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = KosmoSviat.NumboRush;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -323,11 +329,14 @@
 				DEVELOPMENT_TEAM = MQAY62GC84;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NumboRush/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NumboRush;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -335,9 +344,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = KosmoSviat.NumboRush;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
